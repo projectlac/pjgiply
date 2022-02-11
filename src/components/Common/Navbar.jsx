@@ -12,9 +12,10 @@ import { listLike, getDataFromLocal } from '../../features/search/searchSlice';
 export default function Navbar(props) {
   const { handleChangeTab } = props
   const listOfLike = useSelector(listLike)
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDataFromLocal)
+    dispatch(getDataFromLocal())
   }, [])
   return (
     <Box sx={{ flexGrow: 1 }}>

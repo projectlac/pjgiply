@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const initialState = {
-  saveImage: []
+  saveImage: [],
+  firstLoad: false
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -15,36 +16,28 @@ const initialState = {
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
+
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     like(state, action) {
 
 
-      const data = localStorage.getItem("id_list")
-      if (data) {
-        var ar = data.split(',');
-
-        if (ar.includes(action.payload)) {
-          ar.push(action.payload)
-          localStorage.setItem("id_list", ar)
-        }
+      if (!state.firstLoad) {
+        state.saveImage.push(action.payload)
+        localStorage.setItem("id_list", state.saveImage)
 
       }
       else {
-        if (state.saveImage.length > 0) {
+        const data = localStorage.getItem("id_list")
+        state.firstLoad = false
+        if (data) {
+          if (!data.includes(action.payload)) {
+            let ar = `${data},${action.payload}`;
+            state.saveImage = ar.split(',');
 
-          const duplicateCheck = state.saveImage.includes(action.payload)
-          if (!duplicateCheck) {
-
-            state.saveImage.push(action.payload)
-
+            localStorage.setItem("id_list", ar)
           }
         }
-        else {
-
-          state.saveImage.push(action.payload)
-        }
-        localStorage.setItem("id_list", state.saveImage)
       }
 
     },
@@ -53,6 +46,7 @@ export const searchSlice = createSlice({
       if (Boolean(data)) {
         var ar = data.split(',');
         state.saveImage = ar
+        state.firstLoad = true
       }
 
     }

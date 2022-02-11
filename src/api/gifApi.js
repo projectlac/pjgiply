@@ -12,6 +12,9 @@ const gifApi = {
   },
   search(input) {
     return axiosClient.get(`/search?api_key=${api_key}&q=${input}&limit=30`);
+  },
+  getImgById(input) {
+    return axiosClient.get(`/gifs?api_key=${api_key}&ids=${input}`)
   }
 };
 export default gifApi;

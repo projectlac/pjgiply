@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## Pre-require
+
+You’ll need to have Node >= 14.0.0 and npm >= 5.6 on your machine
+
+### `npm install`
+
+Install the dependencies in the local node_modules folder. <br/>
+This command installs a package, and any packages that it depends on
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -42,4 +51,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
 #

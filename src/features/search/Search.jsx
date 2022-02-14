@@ -1,23 +1,28 @@
 
-import { useState } from 'react';
-import Navbar from '../../components/Common/Navbar';
-import Saved from '../../components/Layout/Saved';
-import SearchIndex from '../../components/Layout/SearchIndex';
+import Box from '@mui/material/Box';
+import { useEffect, useState } from 'react';
+import SearchBox from "../../components/Common/SearchBox"
+import gifApi from '../../api/gifApi';
+import ResultBox from '../../components/Common/ResultBox';
 
-import Container from '@mui/material/Container';
-export function Search() {
-  const [currentTab, setCurrentTab] = useState(true)
-  const handleChangeTab = (bool) => {
-    setCurrentTab(bool)
+export default function Search() {
+  //State
+  const [data, setData] = useState([])
+
+  //Hook
+  useEffect(() => {
+    gifApi.treding().then(res => setData(res.data.data)).catch()
+  }, [])
+
+  //Handle change from search box
+  const handleChange = (st) => {
+    setData(st)
   }
 
-  return (
-    <div>
-      <Navbar handleChangeTab={handleChangeTab} />
-      <Container maxWidth="xl">
-        {currentTab ? (<SearchIndex />) : (<Saved />)}
-      </Container>
-
-    </div>
-  );
+  return (<>
+    <Box>
+      <SearchBox handleChange={handleChange} />
+      <ResultBox data={data} />
+    </Box>
+  </>)
 }

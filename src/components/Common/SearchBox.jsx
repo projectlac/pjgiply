@@ -37,7 +37,7 @@ export default function SearchBox(props) {
                     }
                 }
             }
-            sx={{ width: { md: 521, xs: "100%" }, margin: "40px auto", '& .MuiOutlinedInput-root': { borderRadius: "30px" } }}
+            sx={{ width: { md: 521, xs: "97%" }, margin: "40px auto", '& .MuiOutlinedInput-root': { borderRadius: "30px" } }}
             renderInput={(params) => <TextField {...params} placeholder="Search..." value={params} />}
             getOptionLabel={option => option.name}
         />

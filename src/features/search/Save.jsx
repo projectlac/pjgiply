@@ -1,12 +1,12 @@
 
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import ResultBox from './ResultBox';
+import ResultBox from '../../components/Common/ResultBox';
 import Box from '@mui/material/Box';
 import { listLike } from '../../features/search/searchSlice';
 import gifApi from '../../api/gifApi';
 
-export default function Saved() {
+export default function Save() {
     //state
     const [data, setData] = useState([])
 

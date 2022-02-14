@@ -21,9 +21,8 @@ export const searchSlice = createSlice({
   reducers: {
     like(state, action) {
 
-
       if (!state.firstLoad) {
-        state.saveImage.push(action.payload)
+        !state.saveImage.includes(action.payload) && state.saveImage.push(action.payload)
         localStorage.setItem("id_list", state.saveImage)
 
       }

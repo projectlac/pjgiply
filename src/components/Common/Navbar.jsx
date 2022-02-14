@@ -6,12 +6,9 @@ import Typography from '@mui/material/Typography';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDataFromLocal, listLike } from '../../features/search/searchSlice';
-
-
-export default function Navbar(props) {
-  //Props
-  const { handleChangeTab } = props
-
+import { Link } from 'react-router-dom';
+import "../../assets/styles/styles.scss"
+export default function Navbar() {
   //Redux
   const listOfLike = useSelector(listLike)
   const dispatch = useDispatch();
@@ -22,14 +19,14 @@ export default function Navbar(props) {
   }, [dispatch])
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }} className="navbar">
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             GIPHY Searcher
           </Typography>
-          <Button color="inherit" onClick={() => { handleChangeTab(true) }}>Search</Button>
-          <Button color="inherit" onClick={() => { handleChangeTab(false) }}>Saved{" "}{listOfLike.length}</Button>
+          <Link to="/"><Button color="inherit">Search</Button></Link>
+          <Link to="/save"><Button color="inherit">Saved{" "}{listOfLike.length}</Button></Link>
         </Toolbar>
       </AppBar>
     </Box>

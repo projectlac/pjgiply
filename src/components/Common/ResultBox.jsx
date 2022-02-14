@@ -8,6 +8,13 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { like, listLike } from '../../features/search/searchSlice';
 
 export default function ResultBox(props) {
+    //Constant
+    const STATUS_ENUM = {
+        HIDDEN: "0",
+        VISIBLE: "1",
+        LIKE: "#f44336",
+        UNLIKE: "#e0e0e0"
+    }
     //Props
     const { data } = props
 
@@ -37,10 +44,10 @@ export default function ResultBox(props) {
                                     onClick={() => { handleClick(item.id) }}
                                 />
                                 <ImageListItemBar
-                                    sx={{ background: "transparent", opacity: `${listOfLike.includes(item.id) ? ("1") : ("0")}` }} //Set opacity for like button
+                                    sx={{ background: "transparent", opacity: `${listOfLike.includes(item.id) ? STATUS_ENUM.VISIBLE : STATUS_ENUM.HIDDEN}` }} //Set opacity for like button
                                     actionIcon={
 
-                                        <AiFillHeart color={`${listOfLike.includes(item.id) ? ("#f44336") : ("#ffc6c6")}`} style={{ transform: "scale(3) translateX(-8px) translateY(-6px)" }} />
+                                        <AiFillHeart color={`${listOfLike.includes(item.id) ? STATUS_ENUM.LIKE : STATUS_ENUM.UNLIKE}`} style={{ transform: "scale(3) translateX(-8px) translateY(-6px)" }} />
                                     }
                                 />
                             </ImageListItem>

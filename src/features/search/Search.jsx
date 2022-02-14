@@ -1,7 +1,7 @@
 
 import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
-import SearchBox from "../../components/Common/SearchBox"
+import SearchBox from "../../components/Layout/Search/SearchBox"
 import gifApi from '../../api/gifApi';
 import ResultBox from '../../components/Common/ResultBox';
 
